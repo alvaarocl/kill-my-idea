@@ -1,0 +1,16 @@
+# Normalize line endings to LF on commit, checkout.
+# Prevents CRLF/LF mismatches from triggering mass Prettier errors (core.autocrlf=true).
+* text=auto eol=lf
+
+# Binary files — never normalize
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.pdf binary
+*.zip binary

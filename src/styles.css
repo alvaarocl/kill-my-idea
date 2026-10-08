@@ -1,0 +1,173 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Clash Display", "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ember: var(--ember);
+  --color-ember-glow: var(--ember-glow);
+  --color-warn: var(--warn);
+  --color-good: var(--good);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Charcoal & Ember */
+  --background: oklch(0.18 0.002 60); /* #1a1a1a */
+  --foreground: oklch(0.97 0.003 80); /* warm paper */
+  --surface: oklch(0.225 0.003 60); /* slightly lifted */
+  --surface-2: oklch(0.28 0.003 60); /* #2d2d2d */
+  --card: oklch(0.225 0.003 60);
+  --card-foreground: oklch(0.97 0.003 80);
+  --popover: oklch(0.225 0.003 60);
+  --popover-foreground: oklch(0.97 0.003 80);
+  --primary: oklch(0.66 0.185 36); /* ember #e85d3a */
+  --primary-foreground: oklch(0.99 0.003 80);
+  --secondary: oklch(0.28 0.003 60);
+  --secondary-foreground: oklch(0.97 0.003 80);
+  --muted: oklch(0.28 0.003 60);
+  --muted-foreground: oklch(0.7 0.008 70);
+  --accent: oklch(0.66 0.185 36);
+  --accent-foreground: oklch(0.99 0.003 80);
+  --destructive: oklch(0.62 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.32 0.005 60);
+  --input: oklch(0.32 0.005 60);
+  --ring: oklch(0.66 0.185 36);
+
+  --ember: oklch(0.66 0.185 36);
+  --ember-glow: oklch(0.78 0.16 55);
+  --warn: oklch(0.82 0.15 85);
+  --good: oklch(0.74 0.16 150);
+
+  --gradient-ember: linear-gradient(135deg, oklch(0.66 0.185 36), oklch(0.78 0.16 55));
+  --gradient-charcoal: linear-gradient(180deg, oklch(0.225 0.003 60), oklch(0.18 0.002 60));
+  --shadow-ember: 0 20px 60px -20px oklch(0.66 0.185 36 / 0.55);
+  --shadow-deep: 0 30px 80px -30px oklch(0 0 0 / 0.7);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    background-color: var(--color-background);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, oklch(0.66 0.185 36 / 0.12), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 0%, oklch(0.78 0.16 55 / 0.06), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background-color: var(--color-ember);
+    color: var(--color-foreground);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Subtle grain texture for premium feel */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+@keyframes ember-flicker {
+  0%,
+  100% {
+    opacity: 0.9;
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0.3px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.text-gradient-ember {
+  background: var(--gradient-ember);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    oklch(0.7 0 0) 0%,
+    oklch(0.97 0.003 80) 50%,
+    oklch(0.7 0 0) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 2.5s linear infinite;
+}
+
+.glow-ember {
+  box-shadow: var(--shadow-ember);
+}

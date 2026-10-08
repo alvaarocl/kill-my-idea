@@ -1,0 +1,53 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+.output
+.vinxi
+.tanstack/**
+.nitro
+*.local
+
+# Wrangler / Cloudflare
+.wrangler/
+.dev.vars
+
+# Supabase local temp files
+supabase/.temp/
+
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+bun.lock
+# Google OAuth credentials — never commit
+client_secret_*.json
+*.apps.googleusercontent.com.json
+
+# Production prompts (the public repo ships src/lib/prompts/example.ts)
+src/lib/prompts/private.ts
+
+# Internal notes (business plan, marketing context), kept out of the public repo
+.lovable/
+.agents/

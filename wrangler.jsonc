@@ -1,0 +1,44 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kill-my-idea",
+  "compatibility_date": "2025-09-24",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "src/server.ts",
+  // ─── Custom domain ───────────────────────────────────────────────────────
+  // Requires the killmyidea.es zone to be active in this Cloudflare account.
+  // Wrangler will provision the DNS records + cert on deploy.
+  "routes": [
+    { "pattern": "killmyidea.es", "custom_domain": true },
+    { "pattern": "www.killmyidea.es", "custom_domain": true },
+  ],
+  // ─── Secrets (set via: wrangler secret put <KEY>) ────────────────────────
+  // Supabase
+  // - SUPABASE_URL
+  // - SUPABASE_PUBLISHABLE_KEY
+  // - SUPABASE_SERVICE_ROLE_KEY
+  //
+  // AI
+  // - GOOGLE_API_KEY
+  //
+  // Paddle — sandbox
+  // - PADDLE_SANDBOX_API_KEY
+  // - PAYMENTS_SANDBOX_WEBHOOK_SECRET
+  // - PADDLE_SANDBOX_PRICE_SINGLE_REPORT
+  // - PADDLE_SANDBOX_PRICE_FOUNDER_MONTHLY
+  // - PADDLE_SANDBOX_PRICE_PRO_MONTHLY
+  //
+  // Paddle — live (set when account is approved)
+  // - PADDLE_LIVE_API_KEY
+  // - PAYMENTS_LIVE_WEBHOOK_SECRET
+  // - PADDLE_LIVE_PRICE_SINGLE_REPORT
+  // - PADDLE_LIVE_PRICE_FOUNDER_MONTHLY
+  // - PADDLE_LIVE_PRICE_PRO_MONTHLY
+  //
+  // Email
+  // - RESEND_API_KEY
+  // - RESEND_FROM  (e.g. "Kill My Idea <hello@killmyidea.es>")
+  //
+  // Build-time (goes in .env.production, baked into bundle on deploy)
+  // - VITE_PAYMENTS_CLIENT_TOKEN  (test_... for sandbox, live_... for live)
+  // - VITE_LIVE_CHECKOUT_ENABLED  (set to "1" to enable live checkout)
+}
